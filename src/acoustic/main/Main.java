@@ -11,6 +11,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -70,7 +71,8 @@ public class Main extends JavaPlugin{
         panelMeta.setDisplayName(ChatColor.GRAY + "Acoustic Panel");
         panel.setItemMeta(panelMeta);
 		 
-		ShapedRecipe Panel = new ShapedRecipe(panel);
+        NamespacedKey key = new NamespacedKey(this, "acoustic_panel");
+		ShapedRecipe Panel = new ShapedRecipe(key, panel);
 		 
 		Panel.shape("ICI","IWI","ICI");
 		 
