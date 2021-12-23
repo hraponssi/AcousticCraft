@@ -47,7 +47,7 @@ public class EventHandlers implements Listener {
 	        
 	        ArrayList<String> lore = new ArrayList<String>();
 	        lore.add("An acoustic panel");
-	        lore.add("Made for Christmas 2020");
+	        lore.add("Made for Christmas 2021");
 	        panelMeta.setLore(lore);
 	        panelMeta.setDisplayName(ChatColor.GRAY + "Acoustic Panel");
 	        panel.setItemMeta(panelMeta);
