@@ -1,10 +1,10 @@
 name: AcousticCraft
 version: 1.0.0
-description: adds acoustic panels to minecraft
+description: Adds acoustic panels to minecraft
 author: Hraponssi
 main: acoustic.main.Main
 depend: [ProtocolLib]
-api-version: 1.16
+api-version: 1.18
 commands:
   acoustic:
     description: Main acousticcraft command

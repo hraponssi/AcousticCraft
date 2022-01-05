@@ -19,8 +19,6 @@ public class Commands implements CommandExecutor {
 			Player player = (Player) sender;
 			if(command.equalsIgnoreCase("acoustic")) {
 				player.sendMessage(ChatColor.GREEN + "This server has acoustic panels.");
-				//player.sendMessage("Location saved.");
-				//plugin.panellocs.add(player.getLocation());
 				return true;
 			}
 		}else {

@@ -5,14 +5,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -103,7 +101,6 @@ public class Main extends JavaPlugin{
 								if((loc.getBlockY()-ploc.getBlockY()) < 4 && (loc.getBlockY()-ploc.getBlockY()) > -4) {
 									if((loc.getBlockX()-ploc.getBlockX()) < 4 && (loc.getBlockX()-ploc.getBlockX()) > -4) {
 						                panelpeople.add(player);
-						                //if(player.hasPermission(new Permissions().craft)) player.sendMessage("your near a panel");
 									}
 								}
 							}
@@ -112,7 +109,7 @@ public class Main extends JavaPlugin{
 				}
 			}
 		}, 20L, 20L);
-	    // Disable all sound effects
+	    // Disable all sound effects (copied from protocollib example)
 	    protocolManager.addPacketListener(
 	      new PacketAdapter(this, ListenerPriority.NORMAL,
 	              PacketType.Play.Server.NAMED_SOUND_EFFECT) {
@@ -121,7 +118,6 @@ public class Main extends JavaPlugin{
 	            // Item packets (id: 0x29)
 	            if (event.getPacketType() ==
 	                    PacketType.Play.Server.NAMED_SOUND_EFFECT) {
-	            	//event.getPlayer().sendMessage("sound played");
 	            	if(panelpeople.contains(event.getPlayer())) {
 		                event.setCancelled(true);
 	            	}
@@ -144,14 +140,14 @@ public class Main extends JavaPlugin{
 	public void loadConfig() {
 		reloadConfig();
 		FileConfiguration config = this.getConfig();
-		//offlinemode = config.getBoolean("offlinemode");
+		//Potential future config options
 	}
 
 	public void loadAcousticData() {
 		List<String> locs = configManager.getAcousticData().getStringList("panels");
 		for(String key: locs) {
-				String[] splitted = key.split(":");
-				panellocs.add(new Location(Bukkit.getWorld(splitted[3]), Integer.parseInt(splitted[0]), Integer.parseInt(splitted[1]), Integer.parseInt(splitted[2])));
+			String[] splitted = key.split(":");
+			panellocs.add(new Location(Bukkit.getWorld(splitted[3]), Integer.parseInt(splitted[0]), Integer.parseInt(splitted[1]), Integer.parseInt(splitted[2])));
         }
 	}
 	
